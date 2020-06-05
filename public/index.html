@@ -1,33 +1,75 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to Firebase Hosting</title>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Welcome to Firebase Hosting</title>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.15.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.15.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.15.0/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/7.15.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.15.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <style>
+      button {
+        background: rgb(38, 132, 255);
+        padding: 0.6rem 0.2rem;
+      }
+      code {
+        display: block;
+        font-family: monospace;
+        font-size: large;
+        padding: 0.9rem 0.3rem;
+        margin: 0.2rem 0;
+        border: 1px dashed black;
+        user-select: all;
+      }
+    </style>
+  </head>
 
-  <!-- update the version number as needed -->
-  <script defer src="/__/firebase/7.15.0/firebase-app.js"></script>
-  <!-- include only the Firebase features as you need -->
-  <script defer src="/__/firebase/7.15.0/firebase-auth.js"></script>
-  <script defer src="/__/firebase/7.15.0/firebase-firestore.js"></script>
-  <script defer src="/__/firebase/7.15.0/firebase-messaging.js"></script>
-  <script defer src="/__/firebase/7.15.0/firebase-storage.js"></script>
-  <!-- initialize the SDK after all desired features are loaded -->
-  <script defer src="/__/firebase/init.js"></script>
-  <style>
-    button {
-      background: rgb(38, 132, 255);
-      padding: 0.6rem 0.2rem;
-    }
-  </style>
-</head>
+  <body>
+    <!-- Essentials: -->
+    <h1>Hello, Firebase World!</h1>
+    <p>
+      Run:
+      <code>npm install -g firebase-tools</code>
+      <code>firebase init</code>
+      <code>firebase deploy</code>
+    </p>
 
-<body>
-  <h1>Hello, Firebase World!</h1>
-  <button onclick="googleLogin()">Login with Google</button>
-  <script src="./app.js">
-  </script>
-</body>
+    <p id="username"></p>
+    <button onclick="googleLogin()">Login with Google</button>
+    <input type="text" onchange="updatePost(event)" />
 
+    <h1>Database stuff (firestore)</h1>
+    <p id="singleread"></p>
+    <p id="realtimestream"></p>
+    <p id="products"></p>
+    <hr />
+
+    <h1>Storage stuff (user generated files)</h1>
+    <input
+      type="file"
+      name="uploadfile"
+      id="uploadfile"
+      onchange="uploadFile(this.files)"
+    />
+    <img
+      style="display: block; margin-top: 0.2rem;"
+      src=""
+      alt=""
+      id="imgUpload"
+    />
+
+    <h1>Cloud functions</h1>
+    <p>Do not forget to:</p>
+    <code>firebase init functions</code>
+    <p>To deploy only the functions:</p>
+    <code>firebase deploy --only functions</code>
+    <script src="./app.js"></script>
+  </body>
 </html>
